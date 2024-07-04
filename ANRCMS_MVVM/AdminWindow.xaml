@@ -1,0 +1,200 @@
+﻿<Window x:Class="ANRCMS_MVVM.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewmodel="clr-namespace:ANRCMS_MVVM.ViewModel"
+        Title="Admin" Height="450" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+    <Window.DataContext>
+        <viewmodel:AdminViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <TabControl>
+            <TabControl.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="StyleResource.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </TabControl.Resources>
+
+            <TabItem FontFamily="Arial">
+                <TabItem.Header>
+                    <TextBlock Text="Khách hàng" Style="{DynamicResource ResourceKey=TabItem}"/>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="580"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView Name="lvCustomerDisplay" Grid.Column="0">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding CustomerId, Mode=OneWay}"/>
+                                <GridViewColumn Header="HỌ TÊN" DisplayMemberBinding="{Binding CustomerFullName, Mode=OneWay}"/>
+                                <GridViewColumn Header="ĐIỆN THOẠI" DisplayMemberBinding="{Binding Telephone, Mode=OneWay}"/>
+                                <GridViewColumn Header="ĐỊA CHỈ" Width="300" DisplayMemberBinding="{Binding EmailAddress, Mode=OneWay}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="Customer" FontSize="20" TextAlignment="Center" FontWeight="Bold" Margin="0,10,0,0"/>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="ID" Width="100"/>
+                            <TextBox Name="tbCustomerId" Width="130" IsReadOnly="True"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="FULL NAME" Width="100"/>
+                            <TextBox Name="tbCustomerFullName" Width="130"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="TELEPHONE" Width="100"/>
+                            <TextBox Name="tbCustomerTelephone" Width="130"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="EMAIL" Width="100"/>
+                            <TextBox Name="tbCustomerEmail" Width="130"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="BIRTHDAY" Width="100"/>
+                            <DatePicker Name="dpCustomerBirthday" Width="130"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="STATUS" Width="100"/>
+                            <RadioButton Name="rbCustomerActive" Content="ACTIVE" FontSize="12" Margin="0,0,5,0" IsChecked="True"/>
+                            <RadioButton Name="rbCustomerInactive" Content="INACTIVE" FontSize="12"/>
+                        </StackPanel>
+                        <Button Name="btnCustomerEmpty" Content="Empty Values..." Width="100" Height="30" Template="{DynamicResource NormalTemplate}"/>
+                        <Grid Margin="0,3,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Name="btnInsertCustomer" Content="INSERT" Template="{DynamicResource InsertTemplate}" Width="70" Height="30" Margin="4,0,4,0"/>
+                            <Button Name="btnUpdateCustomer" Content="UPDATE" Template="{DynamicResource UpdateTemplate}" Width="70" Height="30" Grid.Column="1" Margin="4,0,4,0"/>
+                            <Button Name="btnDeleteCustomer" Content="DELETE" Template="{DynamicResource DeleteTemplate}" Width="70" Height="30" Foreground="White" Grid.Column="2"/>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem FontFamily="Arial">
+                <TabItem.Header>
+                    <TextBlock Text="Room" Style="{DynamicResource ResourceKey=TabItem}"/>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="580"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView Name="lvRoomInfoDisplay" Grid.Column="0">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding RoomId, Mode=OneWay}"/>
+                                <GridViewColumn Header="ROOM NO" DisplayMemberBinding="{Binding RoomNumber, Mode=OneWay}"/>
+                                <GridViewColumn Header="DESCRIPTION" DisplayMemberBinding="{Binding RoomDetailDescription, Mode=OneWay}"/>
+                                <GridViewColumn Header="MAX CAPACITY" DisplayMemberBinding="{Binding RoomMaxCapacity, Mode=OneWay}"/>
+                                <GridViewColumn Header="TYPE" DisplayMemberBinding="{Binding RoomType.RoomTypeName, Mode=OneWay}"/>
+                                <GridViewColumn Header="STATUS" DisplayMemberBinding="{Binding RoomStatus, Mode=OneWay}"/>
+                                <GridViewColumn Header="PRICE/DAY" DisplayMemberBinding="{Binding RoomPricePerDay, Mode=OneWay}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="Room Info" FontSize="20" TextAlignment="Center" FontWeight="Bold" Margin="0,10,0,0"/>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="ID" Width="100"/>
+                            <TextBox Name="tbRoomInfoId" Width="130" IsReadOnly="True"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="ROOM NO" Width="100"/>
+                            <TextBox Name="tbRoomInfoNumber" Width="130"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="DESCRIPTION" Width="100"/>
+                            <TextBox Name="tbRoomInfoDescription" Width="130" Height="130" TextWrapping="Wrap"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="MAX CAPACITY" Width="100"/>
+                            <TextBox Name="tbRoomInfoCapacity" Width="130"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="TYPE" Width="100"/>
+                            <ComboBox Name="cbRoomTypeId" Width="130"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="STATUS" Width="100"/>
+                            <RadioButton Name="rbRoomInfoActive" Content="ACTIVE" FontSize="12" Margin="0,0,5,0" IsChecked="True"/>
+                            <RadioButton Name="rbRoomInfoInactive" Content="INACTIVE" FontSize="12"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="PRICE/DAY" Width="100"/>
+                            <TextBox Name="tbRoomInfoPricePerDay" Width="130"/>
+                        </StackPanel>
+                        <Button Name="btnRoomInfoEmpty" Content="Empty Values..." Width="100" Height="30" Template="{DynamicResource NormalTemplate}"/>
+                        <Grid Margin="0,3,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Name="btnRoomInfoInsert" Content="INSERT" Template="{DynamicResource InsertTemplate}" Width="70" Margin="4,0,4,0"/>
+                            <Button Name="btnRoomInfoUpdate" Content="UPDATE" Template="{DynamicResource UpdateTemplate}" Width="70" Height="30" Grid.Column="1" Margin="4,0,4,0"/>
+                            <Button Name="btnRoomInfoDelete" Content="DELETE" Template="{DynamicResource DeleteTemplate}" Width="70" Height="30" Foreground="White" Grid.Column="2"/>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem FontFamily="Arial">
+                <TabItem.Header>
+                    <TextBlock Text="Room type" Style="{DynamicResource ResourceKey=TabItem}"/>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="580"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView Name="lvRoomTypeDisplay" Grid.Column="0">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding RoomTypeId, Mode=OneWay}"/>
+                                <GridViewColumn Header="NAME" DisplayMemberBinding="{Binding RoomTypeName, Mode=OneWay}"/>
+                                <GridViewColumn Header="DESCRIPTION" DisplayMemberBinding="{Binding TypeDescription, Mode=OneWay}"/>
+                                <GridViewColumn Header="NOTE" DisplayMemberBinding="{Binding TypeNote, Mode=OneWay}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="Room Type" FontSize="20" TextAlignment="Center" FontWeight="Bold" Margin="0,10,0,0"/>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="ID" Width="100"/>
+                            <TextBox Name="tbRoomTypeId" Width="130" IsReadOnly="True"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="NAME" Width="100"/>
+                            <TextBox Name="tbRoomTypeName" Width="130"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="DESCRIPTION" Width="100"/>
+                            <TextBox Name="tbRoomTypeDescription" Width="130" Height="65" TextWrapping="Wrap"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="NOTE" Width="100"/>
+                            <TextBox Name="tbRoomTypeNote" Width="130" Height="65" TextWrapping="Wrap"/>
+                        </StackPanel>
+                        <Button Name="bthRoomTypeEmpty" Content="Empty Values..." Width="100" Height="30" Template="{DynamicResource NormalTemplate}"/>
+                        <Grid Margin="0,3,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Name="btnRoomTypeInsert" Content="INSERT" Template="{DynamicResource InsertTemplate}" Width="70" Margin="17,0,18,0"/>
+                            <Button Name="btnRoomTypeUpdate" Content="UPDATE" Template="{DynamicResource UpdateTemplate}" Width="70" Height="30" Grid.Column="1" Margin="18,0,16,0"/>
+                            <Button Name="btnRoomTypeDelete" Content="DELETE" Template="{DynamicResource DeleteTemplate}" Width="70" Height="30" Foreground="White" Grid.Column="2" Margin="18,0,17,0"/>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button Name="btnLogout" Content="Logout" HorizontalAlignment="Right" VerticalAlignment="Top" Background="DeepSkyBlue" Padding="3" FontSize="13" Margin="5" FontFamily="Arial" FontWeight="Bold"/>
+    </Grid>
+</Window>
