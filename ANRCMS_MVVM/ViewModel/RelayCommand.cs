@@ -12,7 +12,7 @@ namespace ANRCMS_MVVM.ViewModel
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public RelayCommand(Action<object> execute, Predicate<object> canExecute)
+        public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
         {
             _canExecute = canExecute;
             _execute = execute;

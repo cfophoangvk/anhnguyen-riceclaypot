@@ -11,5 +11,15 @@ namespace ANRCMS_MVVM
         {
             InitializeComponent();
         }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Đăng xuất?","",MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            {
+                Homepage h = new Homepage();
+                h.Show();
+                this.Close();
+            }
+        }
     }
 }
