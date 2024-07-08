@@ -15,7 +15,13 @@ public partial class Order
 
     public short Status { get; set; }
 
-    public short TotalPrice { get; set; }
+    public DateOnly? OrderDate { get; set; }
+
+    public TimeOnly? InTime { get; set; }
+
+    public TimeOnly? OutTime { get; set; }
+
+    public int TotalPrice { get; set; }
 
     public virtual Branch Branch { get; set; } = null!;
 

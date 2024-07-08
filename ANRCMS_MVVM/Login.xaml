@@ -4,7 +4,7 @@
       Height="450" Width="800"
       Title="Home">
     <Grid>
-        <Image Source="Images/background.jpg"/>
+        <Image Source="Images/background-login.jpg"/>
         <TabControl Padding="20 10" HorizontalAlignment="Center" Background="#B2808080" VerticalAlignment="Center">
             <TabItem Header="Khách hàng" FontSize="16" FontFamily="Myriad Pro">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">

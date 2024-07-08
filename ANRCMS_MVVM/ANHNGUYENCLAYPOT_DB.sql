@@ -39,14 +39,16 @@ CREATE TABLE [Food] (
 	PRIMARY KEY([FoodID])
 );
 GO
-
 CREATE TABLE [Order] (
 	[OrderID] INT NOT NULL IDENTITY,
 	[CustomerID] INT,
 	[BranchID] INT NOT NULL,
 	[Discount] INT,
 	[Status] SMALLINT NOT NULL,
-	[TotalPrice] SMALLINT NOT NULL,
+	[OrderDate] DATE,
+	[InTime] TIME,
+	[OutTime] TIME,
+	[TotalPrice] INT NOT NULL,
 	PRIMARY KEY([OrderID])
 );
 GO

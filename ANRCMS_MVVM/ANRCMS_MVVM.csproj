@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Properties\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Properties\**" />
+    <Page Remove="Properties\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Images\1.png" />
     <None Remove="Images\10.png" />
     <None Remove="Images\2.png" />
@@ -19,7 +26,9 @@
     <None Remove="Images\7.png" />
     <None Remove="Images\8.png" />
     <None Remove="Images\9.png" />
-    <None Remove="Images\background.jpg" />
+    <None Remove="Images\background-logged.jpg" />
+    <None Remove="Images\background-login.jpg" />
+    <None Remove="Images\user-profile.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -59,7 +68,9 @@
     <Resource Include="Images\9.png">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\background.jpg" />
+    <Resource Include="Images\background-logged.jpg" />
+    <Resource Include="Images\background-login.jpg" />
+    <Resource Include="Images\user-profile.jpg" />
   </ItemGroup>
 
 </Project>

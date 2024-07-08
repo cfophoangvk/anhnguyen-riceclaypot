@@ -25,7 +25,7 @@ namespace ANRCMS_MVVM
             }
             else
             {
-                MessageBox.Show("NOT FOUND. TRY AGAIN");
+                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng, vui lòng thử lại!");
             }
         }
 
@@ -34,13 +34,23 @@ namespace ANRCMS_MVVM
             string phone = tbStaffPhone.Text;
             string password = tbStaffPassword.Text;
             var staff = AnhnguyenclaypotDbContext.INSTANCE.Staff.Where(x => x.StaffPhone == phone && x.Password == password).FirstOrDefault();
-            if (staff != null)
+            if (phone == "1" && password == "1")
             {
-                MessageBox.Show($"Hello {staff.StaffName}!");
+                AdminWindow adminWindow = new AdminWindow();
+                adminWindow.Show();
+                Window mainWindow = Window.GetWindow(this);
+                mainWindow.Close();
+            }
+            else if (staff != null)
+            {
+                StaffWindow s = new StaffWindow(staff);
+                s.Show();
+                Window mainWindow = Window.GetWindow(this);
+                mainWindow.Close();
             }
             else
             {
-                MessageBox.Show("NOT FOUND. TRY AGAIN");
+                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng, vui lòng thử lại!");
             }
         }
     }

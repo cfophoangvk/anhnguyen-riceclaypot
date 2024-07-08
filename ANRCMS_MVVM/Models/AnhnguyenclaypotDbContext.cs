@@ -9,7 +9,7 @@ public partial class AnhnguyenclaypotDbContext : DbContext
     public static AnhnguyenclaypotDbContext INSTANCE = new AnhnguyenclaypotDbContext();
     public AnhnguyenclaypotDbContext()
     {
-        if (INSTANCE != null)
+        if (INSTANCE == null)
         {
             INSTANCE = this;
         }
@@ -33,14 +33,13 @@ public partial class AnhnguyenclaypotDbContext : DbContext
     public virtual DbSet<Staff> Staff { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=DESKTOP-VSTI326\\VKHOANG;Initial Catalog=ANHNGUYENCLAYPOT_DB; Trusted_Connection=SSPI;Encrypt=false");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Branch>(entity =>
         {
-            entity.HasKey(e => e.BranchId).HasName("PK__Branch__A1682FA5527B0C7C");
+            entity.HasKey(e => e.BranchId).HasName("PK__Branch__A1682FA505184C60");
 
             entity.ToTable("Branch");
 
@@ -50,11 +49,11 @@ public partial class AnhnguyenclaypotDbContext : DbContext
 
         modelBuilder.Entity<Customer>(entity =>
         {
-            entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64B887A89DFA");
+            entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64B84E5CBC5B");
 
             entity.ToTable("Customer");
 
-            entity.HasIndex(e => e.CustomerPhone, "UQ__Customer__390618B36E584BFC").IsUnique();
+            entity.HasIndex(e => e.CustomerPhone, "UQ__Customer__390618B38687A716").IsUnique();
 
             entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
             entity.Property(e => e.Address).HasMaxLength(255);
@@ -65,7 +64,7 @@ public partial class AnhnguyenclaypotDbContext : DbContext
 
         modelBuilder.Entity<Food>(entity =>
         {
-            entity.HasKey(e => e.FoodId).HasName("PK__Food__856DB3CBFF547078");
+            entity.HasKey(e => e.FoodId).HasName("PK__Food__856DB3CB4E1363BB");
 
             entity.ToTable("Food");
 
@@ -76,7 +75,7 @@ public partial class AnhnguyenclaypotDbContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__Order__C3905BAFB215BDC5");
+            entity.HasKey(e => e.OrderId).HasName("PK__Order__C3905BAF0CBF0AAC");
 
             entity.ToTable("Order");
 
@@ -96,7 +95,7 @@ public partial class AnhnguyenclaypotDbContext : DbContext
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity.HasKey(e => new { e.OrderId, e.FoodId }).HasName("PK__OrderDet__6BC680932F99F4C6");
+            entity.HasKey(e => new { e.OrderId, e.FoodId }).HasName("PK__OrderDet__6BC68093290F2FAE");
 
             entity.ToTable("OrderDetail");
 
@@ -116,9 +115,9 @@ public partial class AnhnguyenclaypotDbContext : DbContext
 
         modelBuilder.Entity<Staff>(entity =>
         {
-            entity.HasKey(e => e.StaffId).HasName("PK__Staff__96D4AAF7C43C0DD2");
+            entity.HasKey(e => e.StaffId).HasName("PK__Staff__96D4AAF76E4A1FA4");
 
-            entity.HasIndex(e => e.StaffPhone, "UQ__Staff__143C00B3365D9A91").IsUnique();
+            entity.HasIndex(e => e.StaffPhone, "UQ__Staff__143C00B3216596EB").IsUnique();
 
             entity.Property(e => e.StaffId).HasColumnName("StaffID");
             entity.Property(e => e.BranchId).HasColumnName("BranchID");
