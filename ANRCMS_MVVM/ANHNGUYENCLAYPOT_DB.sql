@@ -127,7 +127,7 @@ VALUES
 (N'Cơm thố Sườn','Rib claypot rice with cartilage ribs',50),
 (N'Cơm thố Bò','Beef claypot rice',35),
 (N'Cơm thố Gà','Chicken claypot rice',45),
-(N'Cơm thố Xá Xíu','Duong Chau claypot rice',50),
+(N'Cơm thố Xá Xíu','Xa Xiu claypot rice',50),
 (N'Cơm thố Đặc Biệt','Special claypot rice',70),
 (N'Cơm thố Bò + Gà','Beef + Chicken claypot rice',60),
 (N'Coca','Coke',15),
