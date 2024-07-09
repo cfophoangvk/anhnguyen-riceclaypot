@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ANRCMS_MVVM.Models;
+using ANRCMS_MVVM.ViewModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ANRCMS_MVVM
 {
@@ -19,9 +9,28 @@ namespace ANRCMS_MVVM
     /// </summary>
     public partial class CustomerWindow : Window
     {
-        public CustomerWindow()
+        private Customer Customer { get; set; }
+        public CustomerWindow(Customer c)
         {
+            this.DataContext = new CustomerViewModel(c);
+            Customer = c;
             InitializeComponent();
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Đăng xuất?", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            {
+                Homepage h = new Homepage();
+                h.Show();
+                this.Close();
+            }
+        }
+
+        private void btnUserProfile_Click(object sender, RoutedEventArgs e)
+        {
+            spUserProfile.Visibility = Visibility.Collapsed;
+            frMain.Content = new CustomerProfile(Customer);
         }
     }
 }

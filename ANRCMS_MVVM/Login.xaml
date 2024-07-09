@@ -16,7 +16,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="13">
                         <TextBlock Text="Mật khẩu:" FontSize="15" Width="100" VerticalAlignment="Center"/>
-                        <TextBox Name="tbCustomerPassword" Width="200" FontSize="15"/>
+                        <PasswordBox Name="pwCustomerPassword" Width="200" FontSize="15"/>
                     </StackPanel>
                     <Grid Margin="0 0 0 10">
                         <Grid.ColumnDefinitions>
@@ -38,16 +38,9 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="13">
                         <TextBlock Text="Mật khẩu:" FontSize="15" Width="100" VerticalAlignment="Center"/>
-                        <TextBox Name="tbStaffPassword" Width="200" FontSize="15"/>
+                        <PasswordBox Name="pwStaffPassword" Width="200" FontSize="15"/>
                     </StackPanel>
-                    <Grid Margin="0 0 0 10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Button Content="Đăng nhập" Background="DeepSkyBlue" Width="75" FontSize="15" Click="Button_Click_1"/>
-                        <Button Grid.Column="1" Content="Đăng ký" Background="LightGray" Width="75" FontSize="15"/>
-                    </Grid>
+                    <Button Content="Đăng nhập" Background="DeepSkyBlue" Width="75" FontSize="15" Click="Button_Click_1"/>
                 </StackPanel>
             </TabItem>
         </TabControl>

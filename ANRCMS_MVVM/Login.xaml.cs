@@ -17,11 +17,14 @@ namespace ANRCMS_MVVM
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string phone = tbCustomerPhone.Text;
-            string password = tbCustomerPassword.Text;
+            string password = pwCustomerPassword.Password;
             var customer = AnhnguyenclaypotDbContext.INSTANCE.Customers.Where(x => x.CustomerPhone == phone && x.Password == password).FirstOrDefault();
             if (customer != null)
             {
-                MessageBox.Show($"Hello {customer.CustomerName}!");
+                CustomerWindow c = new CustomerWindow(customer);
+                c.Show();
+                Window mainWindow = Window.GetWindow(this);
+                mainWindow.Close();
             }
             else
             {
@@ -32,7 +35,7 @@ namespace ANRCMS_MVVM
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             string phone = tbStaffPhone.Text;
-            string password = tbStaffPassword.Text;
+            string password = pwStaffPassword.Password;
             var staff = AnhnguyenclaypotDbContext.INSTANCE.Staff.Where(x => x.StaffPhone == phone && x.Password == password).FirstOrDefault();
             if (phone == "1" && password == "1")
             {

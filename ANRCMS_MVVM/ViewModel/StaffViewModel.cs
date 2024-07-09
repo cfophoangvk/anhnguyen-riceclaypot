@@ -8,7 +8,7 @@ namespace ANRCMS_MVVM.ViewModel
 {
     public class StaffViewModel : INotifyPropertyChanged
     {
-        private Staff _loggedInStaff;
+        private Staff _loggedInStaff = null!;
         public Staff LoggedInStaff
         {
             get => _loggedInStaff;
@@ -26,7 +26,7 @@ namespace ANRCMS_MVVM.ViewModel
                 };
             }
         }
-        private Staff _editingStaff;
+        private Staff _editingStaff = null!;
         public Staff EditingStaff
         {
             get => _editingStaff;
@@ -71,6 +71,10 @@ namespace ANRCMS_MVVM.ViewModel
         private bool CheckValidate(Staff s)
         {
             if (s.StaffPhone == string.Empty || s.StaffName == string.Empty || s.Password == string.Empty)
+            {
+                return false;
+            }
+            if (AnhnguyenclaypotDbContext.INSTANCE.Staff.Any(x => x.StaffPhone == s.StaffPhone))
             {
                 return false;
             }
