@@ -11,10 +11,12 @@ namespace ANRCMS_MVVM
     /// </summary>
     public partial class StaffProfile : Page
     {
+        private Staff Staff { get; set; }
         public StaffProfile(Staff s)
         {
             InitializeComponent();
             this.DataContext = new StaffViewModel(s);
+            Staff = s;
             password.Password = ((StaffViewModel)this.DataContext).LoggedInStaff.Password;
             tbPassword.Text = password.Password;
         }
@@ -44,7 +46,7 @@ namespace ANRCMS_MVVM
         {
             StaffWindow w = (StaffWindow) Window.GetWindow(this);
             w.spUserProfile.Visibility = Visibility.Visible;
-            w.frMain.Content = null;
+            w.frMain.Content = new StaffOrders(Staff);
         }
 
         private void password_PasswordChanged(object sender, RoutedEventArgs e)

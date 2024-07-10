@@ -43,4 +43,9 @@ public partial class Order
             }
         }
     }
+
+    public int ActualPrice
+    {
+        get => Discount != null ? TotalPrice - (int) Discount : TotalPrice;
+    }
 }

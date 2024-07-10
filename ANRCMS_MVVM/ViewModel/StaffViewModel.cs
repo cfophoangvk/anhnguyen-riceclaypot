@@ -46,14 +46,17 @@ namespace ANRCMS_MVVM.ViewModel
         {
             LoggedInStaff = s;
             Branches = AnhnguyenclaypotDbContext.INSTANCE.Branches.ToList();
-            OrderList = new ObservableCollection<Order>(AnhnguyenclaypotDbContext.INSTANCE.Orders.Include(x => x.Customer).Where(x => x.BranchId == LoggedInStaff.BranchId).ToList());
+            OrderList = new ObservableCollection<Order>(AnhnguyenclaypotDbContext.INSTANCE.Orders
+                                                                                          .Include(x => x.Customer)
+                                                                                          .Where(x => x.BranchId == LoggedInStaff.BranchId)
+                                                                                          .ToList());
         }
 
         public ICommand UpdateStaffCommand => new RelayCommand(execute => UpdateStaffProfile());
 
         private void UpdateStaffProfile()
         {
-            if (MessageBox.Show("Cập nhật thông tin?","",MessageBoxButton.OKCancel,MessageBoxImage.Question) == MessageBoxResult.Cancel)
+            if (MessageBox.Show("Cập nhật thông tin?", "", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.Cancel)
             {
                 return;
             }
@@ -69,7 +72,7 @@ namespace ANRCMS_MVVM.ViewModel
                 staffToUpdate.StaffPhone = EditingStaff.StaffPhone;
                 staffToUpdate.Branch = EditingStaff.Branch;
                 staffToUpdate.Password = EditingStaff.Password;
-                
+
                 AnhnguyenclaypotDbContext.INSTANCE.Update(staffToUpdate);
                 AnhnguyenclaypotDbContext.INSTANCE.SaveChanges();
             }
@@ -100,6 +103,8 @@ namespace ANRCMS_MVVM.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+        #region Orders
         public ObservableCollection<Order> OrderList { get; set; }
         private Order _selectedOrder = null!;
         public Order SelectedOrder
@@ -111,5 +116,6 @@ namespace ANRCMS_MVVM.ViewModel
                 OnPropertyChanged(nameof(SelectedOrder));
             }
         }
+        #endregion
     }
 }
