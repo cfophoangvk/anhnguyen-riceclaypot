@@ -135,3 +135,11 @@ VALUES
 (N'Nước suối','Water',10);
 
 -- Order and OrderDetail is generated while app is working
+INSERT INTO [Order] (CustomerID, BranchID, Discount, Status, OrderDate, InTime, OutTime, TotalPrice)
+VALUES
+(1, 1, 0, 6, '2024-06-25','11:00:00 AM','11:30:00 AM',60),
+(null, 6, 0, 4, '2024-06-27',null,null, 50);
+
+INSERT INTO OrderDetail
+VALUES
+(1, 4, 1), (1, 8, 1), (2, 2, 1)
