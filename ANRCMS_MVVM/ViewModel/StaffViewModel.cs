@@ -1,13 +1,18 @@
 ﻿using ANRCMS_MVVM.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace ANRCMS_MVVM.ViewModel
 {
     public class StaffViewModel : INotifyPropertyChanged
     {
+        #region Staff Profile
         private Staff _loggedInStaff = null!;
         public Staff LoggedInStaff
         {
@@ -41,6 +46,7 @@ namespace ANRCMS_MVVM.ViewModel
         {
             LoggedInStaff = s;
             Branches = AnhnguyenclaypotDbContext.INSTANCE.Branches.ToList();
+            OrderList = new ObservableCollection<Order>(AnhnguyenclaypotDbContext.INSTANCE.Orders.Include(x => x.Customer).Where(x => x.BranchId == LoggedInStaff.BranchId).ToList());
         }
 
         public ICommand UpdateStaffCommand => new RelayCommand(execute => UpdateStaffProfile());
@@ -51,7 +57,7 @@ namespace ANRCMS_MVVM.ViewModel
             {
                 return;
             }
-            if (!CheckValidate(EditingStaff))
+            if (!CheckValidateStaffProfile(EditingStaff))
             {
                 MessageBox.Show("Có lỗi xảy ra!", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return;
@@ -68,7 +74,7 @@ namespace ANRCMS_MVVM.ViewModel
                 AnhnguyenclaypotDbContext.INSTANCE.SaveChanges();
             }
         }
-        private bool CheckValidate(Staff s)
+        private bool CheckValidateStaffProfile(Staff s)
         {
             if (s.StaffPhone == string.Empty || s.StaffName == string.Empty || s.Password == string.Empty)
             {
@@ -85,10 +91,25 @@ namespace ANRCMS_MVVM.ViewModel
             return false;
         }
 
+        #endregion
+
+        #region INotifyPropertyChanged
         public event PropertyChangedEventHandler? PropertyChanged;
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
+        public ObservableCollection<Order> OrderList { get; set; }
+        private Order _selectedOrder = null!;
+        public Order SelectedOrder
+        {
+            get => _selectedOrder;
+            set
+            {
+                _selectedOrder = value;
+                OnPropertyChanged(nameof(SelectedOrder));
+            }
         }
     }
 }

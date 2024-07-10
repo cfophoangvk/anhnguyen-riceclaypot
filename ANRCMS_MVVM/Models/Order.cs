@@ -28,4 +28,19 @@ public partial class Order
     public virtual Customer? Customer { get; set; }
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
+
+    public string StatusTitle
+    {
+        get
+        {
+            switch (Status)
+            {
+                case 1: return "Đang xử lý";
+                case 2: return "Đang giao hàng";
+                case 3: return "Chưa thanh toán";
+                case 4: return "Đã thanh toán";
+                default: return "Không có thông tin";
+            }
+        }
+    }
 }

@@ -42,9 +42,14 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
     <ControlTemplate x:Key="ConfirmTemplate" TargetType="Button">
-        <Border CornerRadius="4" BorderThickness="2" Background="DeepSkyBlue">
+        <Border Name="BorderConfirm" CornerRadius="4" BorderThickness="2" Background="DeepSkyBlue">
             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="BorderConfirm" Property="Background" Value="#FF00A6FF"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
     <Style x:Key="TabItem" TargetType="TextBlock">
         <Setter Property="TextAlignment" Value="Center"/>

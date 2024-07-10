@@ -41,7 +41,7 @@ CREATE TABLE [Food] (
 GO
 CREATE TABLE [Order] (
 	[OrderID] INT NOT NULL IDENTITY,
-	[CustomerID] INT,
+	[CustomerID] INT NOT NULL,
 	[BranchID] INT NOT NULL,
 	[Discount] INT,
 	[Status] SMALLINT NOT NULL,
@@ -137,7 +137,7 @@ VALUES
 -- Order and OrderDetail is generated while app is working
 INSERT INTO [Order] (CustomerID, BranchID, Discount, Status, OrderDate, InTime, OutTime, TotalPrice)
 VALUES
-(1, 1, 0, 6, '2024-06-25','11:00:00 AM','11:30:00 AM',60),
+(1, 1, 0, 4, '2024-06-25','11:00:00 AM','11:30:00 AM',60),
 (null, 6, 0, 4, '2024-06-27',null,null, 50);
 
 INSERT INTO OrderDetail

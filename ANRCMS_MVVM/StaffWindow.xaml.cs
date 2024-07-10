@@ -9,7 +9,7 @@ namespace ANRCMS_MVVM
     /// </summary>
     public partial class StaffWindow : Window
     {
-        private Staff Staff { get; set; }
+        public Staff Staff { get; set; }
         public StaffWindow(Staff s)
         {
             this.DataContext = new StaffViewModel(s);
@@ -31,6 +31,11 @@ namespace ANRCMS_MVVM
         {
             spUserProfile.Visibility = Visibility.Collapsed;
             frMain.Content = new StaffProfile(Staff);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            frMain.Content = new StaffOrders(Staff);
         }
     }
 }
