@@ -32,5 +32,10 @@ namespace ANRCMS_MVVM
             spUserProfile.Visibility = Visibility.Collapsed;
             frMain.Content = new CustomerProfile(Customer);
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            frMain.Content = new FoodMenu();
+        }
     }
 }

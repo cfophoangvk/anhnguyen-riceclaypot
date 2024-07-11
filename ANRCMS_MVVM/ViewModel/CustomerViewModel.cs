@@ -8,6 +8,7 @@ namespace ANRCMS_MVVM.ViewModel
 {
     public class CustomerViewModel : INotifyPropertyChanged
     {
+        #region Customer Profile
         private Customer _loggedInCustomer = null!;
         public Customer LoggedInCustomer
         {
@@ -76,7 +77,9 @@ namespace ANRCMS_MVVM.ViewModel
             }
             return false;
         }
+        #endregion
 
+        #region INotifyPropertyChanged
         public ICommand UpdateCustomerCommand => new RelayCommand(execute => UpdateCustomerProfile());
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -84,5 +87,6 @@ namespace ANRCMS_MVVM.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
     }
 }
