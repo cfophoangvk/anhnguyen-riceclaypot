@@ -21,7 +21,7 @@ namespace ANRCMS_MVVM
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            frameHome.Content = new FoodMenu();
+            frameHome.Content = new HomepageFoodMenu();
             btnLogin.Visibility = Visibility.Visible;
             btnBack.Visibility = Visibility.Collapsed;
         }

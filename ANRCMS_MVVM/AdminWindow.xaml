@@ -8,14 +8,6 @@
     </Window.DataContext>
     <Grid>
         <TabControl>
-            <TabControl.Resources>
-                <ResourceDictionary>
-                    <ResourceDictionary.MergedDictionaries>
-                        <ResourceDictionary Source="StyleResource.xaml"/>
-                    </ResourceDictionary.MergedDictionaries>
-                </ResourceDictionary>
-            </TabControl.Resources>
-
             <TabItem FontFamily="Arial">
                 <TabItem.Header>
                     <TextBlock Text="Khách hàng" Style="{DynamicResource ResourceKey=TabItem}"/>

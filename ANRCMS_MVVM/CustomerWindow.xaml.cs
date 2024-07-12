@@ -35,7 +35,7 @@ namespace ANRCMS_MVVM
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            frMain.Content = new FoodMenu();
+            //frMain.Content = new FoodMenu();
         }
     }
 }

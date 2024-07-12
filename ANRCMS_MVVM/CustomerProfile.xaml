@@ -46,13 +46,6 @@
                 <Button Name="btnDisablePassword" FontFamily="Myriad Pro" Content="Ẩn" Height="20" VerticalAlignment="Top" Width="40" Visibility="Collapsed" Click="btnDisablePassword_Click"/>
             </StackPanel>
             <Grid>
-                <Grid.Resources>
-                    <ResourceDictionary>
-                        <ResourceDictionary.MergedDictionaries>
-                            <ResourceDictionary Source="StyleResource.xaml"/>
-                        </ResourceDictionary.MergedDictionaries>
-                    </ResourceDictionary>
-                </Grid.Resources>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>

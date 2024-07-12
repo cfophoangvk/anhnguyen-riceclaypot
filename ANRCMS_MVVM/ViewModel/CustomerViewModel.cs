@@ -1,4 +1,5 @@
 ﻿using ANRCMS_MVVM.Models;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -8,6 +9,10 @@ namespace ANRCMS_MVVM.ViewModel
 {
     public class CustomerViewModel : INotifyPropertyChanged
     {
+        public CustomerViewModel(Customer c)
+        {
+            LoggedInCustomer = c;
+        }
         #region Customer Profile
         private Customer _loggedInCustomer = null!;
         public Customer LoggedInCustomer
@@ -36,10 +41,6 @@ namespace ANRCMS_MVVM.ViewModel
                 _editingCustomer = value;
                 OnPropertyChanged(nameof(EditingCustomer));
             }
-        }
-        public CustomerViewModel(Customer c)
-        {
-            LoggedInCustomer = c;
         }
 
         private void UpdateCustomerProfile()
@@ -87,6 +88,10 @@ namespace ANRCMS_MVVM.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
+
+        #region Order
+        public ObservableCollection<OrderDetail> OrderCart { get; set; } = new ObservableCollection<OrderDetail>();
         #endregion
     }
 }

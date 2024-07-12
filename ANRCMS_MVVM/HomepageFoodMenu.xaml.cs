@@ -5,9 +5,9 @@ namespace ANRCMS_MVVM
     /// <summary>
     /// Interaction logic for Home.xaml
     /// </summary>
-    public partial class FoodMenu : Page
+    public partial class HomepageFoodMenu : Page
     {
-        public FoodMenu()
+        public HomepageFoodMenu()
         {
             InitializeComponent();
         }
