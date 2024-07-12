@@ -10,10 +10,16 @@ namespace ANRCMS_MVVM
     public partial class CustomerWindow : Window
     {
         private Customer Customer { get; set; }
+        public CustomerFoodMenu Menu { get; set; }
+        public CustomerProfile Profile { get; set; }
+        public CustomerOrders CustomerOrder { get; set; }
         public CustomerWindow(Customer c)
         {
             this.DataContext = new CustomerViewModel(c);
             Customer = c;
+            Menu = new CustomerFoodMenu(Customer);
+            Profile = new CustomerProfile(Customer);
+            CustomerOrder = new CustomerOrders(Customer);
             InitializeComponent();
         }
 
@@ -30,12 +36,20 @@ namespace ANRCMS_MVVM
         private void btnUserProfile_Click(object sender, RoutedEventArgs e)
         {
             spUserProfile.Visibility = Visibility.Collapsed;
-            frMain.Content = new CustomerProfile(Customer);
+            btnCart.Visibility = Visibility.Collapsed;
+            frMain.Content = Profile;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //frMain.Content = new FoodMenu();
+            frMain.Content = Menu;
+        }
+
+        private void btnCart_Click(object sender, RoutedEventArgs e)
+        {
+            frMain.Content = CustomerOrder;
+            btnCart.Visibility = Visibility.Collapsed;
+            btnHome.Visibility = Visibility.Visible;
         }
     }
 }

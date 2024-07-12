@@ -11,12 +11,13 @@ namespace ANRCMS_MVVM
     /// </summary>
     public partial class CustomerProfile : Page
     {
+        private Customer Customer { get; set; }
         public CustomerProfile(Customer c)
         {
             InitializeComponent();
             this.DataContext = new CustomerViewModel(c);
-            password.Password = ((CustomerViewModel)this.DataContext).LoggedInCustomer.Password;
-            tbPassword.Text = password.Password;
+            Customer = c;
+            
         }
 
         private void btnEnablePassword_Click(object sender, RoutedEventArgs e)
@@ -44,7 +45,8 @@ namespace ANRCMS_MVVM
         {
             CustomerWindow w = (CustomerWindow)Window.GetWindow(this);
             w.spUserProfile.Visibility = Visibility.Visible;
-            w.frMain.Content = null;
+            w.btnCart.Visibility = Visibility.Visible;
+            w.frMain.Content = w.Menu;
         }
 
         private void password_PasswordChanged(object sender, RoutedEventArgs e)
@@ -63,6 +65,12 @@ namespace ANRCMS_MVVM
             {
                 password.Password = tbPassword.Text;
             }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            password.Password = ((CustomerViewModel)this.DataContext).LoggedInCustomer.Password;
+            tbPassword.Text = password.Password;
         }
     }
 }

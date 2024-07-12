@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using ANRCMS_MVVM.Models;
+using System.Windows.Controls;
 
 namespace ANRCMS_MVVM
 {
@@ -7,9 +8,12 @@ namespace ANRCMS_MVVM
     /// </summary>
     public partial class HomepageFoodMenu : Page
     {
+        public List<Food> FoodData { get; set; }
         public HomepageFoodMenu()
         {
             InitializeComponent();
+            DataContext = this;
+            FoodData = AnhnguyenclaypotDbContext.INSTANCE.Foods.ToList();
         }
     }
 }

@@ -28,6 +28,8 @@
     <None Remove="Images\9.png" />
     <None Remove="Images\background-logged.jpg" />
     <None Remove="Images\background-login.jpg" />
+    <None Remove="Images\cart.jpg" />
+    <None Remove="Images\home.jpg" />
     <None Remove="Images\user-profile.jpg" />
   </ItemGroup>
 
@@ -70,6 +72,8 @@
     </Resource>
     <Resource Include="Images\background-logged.jpg" />
     <Resource Include="Images\background-login.jpg" />
+    <Resource Include="Images\cart.jpg" />
+    <Resource Include="Images\home.jpg" />
     <Resource Include="Images\user-profile.jpg" />
   </ItemGroup>
 

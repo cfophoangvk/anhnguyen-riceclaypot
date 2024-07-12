@@ -5,6 +5,6 @@
     <Grid>
         <Button Name="btnLogin" Content="Đăng nhập" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 5 5 0" Padding="5" Click="Button_Click"/>
         <Button Name="btnBack" Content="Quay lại" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 5 5 0" Padding="5" Click="Button_Click_1" Visibility="Hidden"/>
-        <Frame Name="frameHome" NavigationUIVisibility="Hidden" Source="FoodMenu.xaml" VerticalAlignment="Bottom"/>
+        <Frame Name="frameHome" NavigationUIVisibility="Hidden" Source="HomepageFoodMenu.xaml" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>

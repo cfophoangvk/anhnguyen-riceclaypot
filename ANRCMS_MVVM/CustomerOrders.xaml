@@ -1,0 +1,29 @@
+﻿<Page x:Class="ANRCMS_MVVM.CustomerOrders"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Height="370" Width="780"
+      Title="CustomerOrders">
+    <StackPanel>
+        <TextBlock Text="Danh sách đơn hàng" FontSize="30" FontFamily="Myriad Pro" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 10 0 0" Foreground="Maroon"/>
+        <ListView Margin="5" Height="300">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID"/>
+                    <GridViewColumn Header="Ngày đặt hàng"/>
+                    <GridViewColumn Header="Giờ vào"/>
+                    <GridViewColumn Header="Giờ ra"/>
+                    <GridViewColumn Header="Giảm giá"/>
+                    <GridViewColumn Header="Thành tiền"/>
+                    <GridViewColumn Header="Trạng thái"/>
+                    <GridViewColumn Header="Xem hóa đơn">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </StackPanel>
+</Page>

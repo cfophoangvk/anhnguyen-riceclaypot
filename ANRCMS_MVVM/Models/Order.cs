@@ -7,11 +7,11 @@ public partial class Order
 {
     public int OrderId { get; set; }
 
-    public int? CustomerId { get; set; }
+    public int CustomerId { get; set; }
 
     public int BranchId { get; set; }
 
-    public int? Discount { get; set; }
+    public int? Discount { get; set; } = 0;
 
     public short Status { get; set; }
 

@@ -14,4 +14,8 @@ public partial class OrderDetail
     public virtual Food Food { get; set; } = null!;
 
     public virtual Order Order { get; set; } = null!;
+    public int TotalAmount
+    {
+        get => Food.FoodPrice * Quantity;
+    }
 }
