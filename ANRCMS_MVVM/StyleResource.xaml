@@ -60,6 +60,9 @@
             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Border>
         <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="BorderConfirm" Property="Background" Value="#7F87CEEB"/>
+            </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="BorderConfirm" Property="Background" Value="#FF00A6FF"/>
             </Trigger>
