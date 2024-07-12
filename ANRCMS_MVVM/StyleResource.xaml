@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ControlTemplate x:Key="NormalTemplate" TargetType="Button">
-        <Border CornerRadius="4" BorderThickness="2">
+        <Border Name="BorderNormal" CornerRadius="4" BorderThickness="2">
             <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Orange"/>
@@ -10,6 +10,11 @@
             </Border.Background>
             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="BorderNormal" Property="Background" Value="#FFB57500"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
     <ControlTemplate x:Key="InsertTemplate" TargetType="Button">
         <Border Name="BorderInsert" CornerRadius="4" BorderThickness="2" Background="Turquoise">
@@ -18,6 +23,9 @@
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter TargetName="BorderInsert" Property="Background" Value="#7F40E0D0"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="BorderInsert" Property="Background" Value="Teal"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -29,6 +37,9 @@
             <Trigger Property="IsEnabled" Value="False">
                 <Setter TargetName="BorderUpdate" Property="Background" Value="#7FFFFF00"/>
             </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="BorderUpdate" Property="Background" Value="#FF7F7F00"/>
+            </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
     <ControlTemplate x:Key="DeleteTemplate" TargetType="Button">
@@ -38,6 +49,9 @@
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter TargetName="BorderDelete" Property="Background" Value="#7FFF0000"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="BorderDelete" Property="Background" Value="Maroon"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
