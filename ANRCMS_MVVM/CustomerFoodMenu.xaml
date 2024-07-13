@@ -30,8 +30,7 @@
                                 <TextBlock Text="{Binding FoodVietnameseName}" TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Arial" FontWeight="Bold"/>
                                 <TextBlock Text="{Binding FoodEnglishName}" TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Arial" FontWeight="Bold" Foreground="Blue"/>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <TextBlock Text="{Binding FoodPrice}" HorizontalAlignment="Center" FontFamily="Arial" FontWeight="Bold" Foreground="Red"/>
-                                    <TextBlock Text=".000" HorizontalAlignment="Center" FontFamily="Arial" FontWeight="Bold" Foreground="Red"/>
+                                    <TextBlock Text="{Binding FoodPrice,StringFormat=N3}" HorizontalAlignment="Center" FontFamily="Arial" FontWeight="Bold" Foreground="Red"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                     <Button Width="20" Content="+" FontWeight="Bold" Template="{DynamicResource InsertTemplate}" Command="{Binding DataContext.AddToCartCommand, RelativeSource={RelativeSource AncestorType=Page}}" CommandParameter="{Binding FoodId}" Margin="5"/>
@@ -60,16 +59,7 @@
                     <GridView>
                         <GridViewColumn Header="Tên món" Width="120" DisplayMemberBinding="{Binding Food.FoodVietnameseName}"/>
                         <GridViewColumn Header="Số lượng" Width="60" DisplayMemberBinding="{Binding Quantity}"/>
-                        <GridViewColumn Header="Đơn giá" Width="50">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <TextBlock Text="{Binding Food.FoodPrice}" HorizontalAlignment="Center"/>
-                                        <TextBlock Text=".000" HorizontalAlignment="Center"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+                        <GridViewColumn Header="Đơn giá" Width="50" DisplayMemberBinding="{Binding Food.FoodPrice,StringFormat=N3}"/>
                         <GridViewColumn Header="Thành tiền" Width="60">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
@@ -85,8 +75,7 @@
             </ListView>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Số tiền bạn phải trả: " Margin="5 0 0 0" VerticalAlignment="Center" FontSize="16" FontFamily="Myriad Pro"/>
-                <TextBlock Text="{Binding TotalPrice}" VerticalAlignment="Center" FontSize="16" FontFamily="Myriad Pro" FontWeight="Bold" Foreground="Red"/>
-                <TextBlock Text=".000" Margin="5 0 7 0" VerticalAlignment="Center" FontSize="16" FontFamily="Myriad Pro" FontWeight="Bold" Foreground="Red"/>
+                <TextBlock Text="{Binding TotalPrice,StringFormat=N3}" VerticalAlignment="Center" FontSize="16" FontFamily="Myriad Pro" FontWeight="Bold" Foreground="Red"/>
                 <Button Width="65" Height="25" FontSize="15" FontFamily="Myriad Pro" Content="Xác nhận" Template="{DynamicResource ConfirmTemplate}" Command="{Binding ConfirmCommand}"/>
             </StackPanel>
         </StackPanel>

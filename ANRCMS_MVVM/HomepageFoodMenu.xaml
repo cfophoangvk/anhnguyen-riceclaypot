@@ -21,10 +21,7 @@
                             <Image Source="{Binding ImageUrl}" Width="100" Height="70"/>
                             <TextBlock Text="{Binding FoodVietnameseName}" TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center"/>
                             <TextBlock Text="{Binding FoodEnglishName}" TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center"/>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <TextBlock Text="{Binding FoodPrice}" HorizontalAlignment="Center"/>
-                                <TextBlock Text=".000" HorizontalAlignment="Center"/>
-                            </StackPanel>
+                            <TextBlock Text="{Binding FoodPrice,StringFormat=N3}" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

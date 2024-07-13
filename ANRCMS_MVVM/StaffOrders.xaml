@@ -28,26 +28,8 @@
                         <GridViewColumn Header="Ngày tạo" DisplayMemberBinding="{Binding OrderDate}"/>
                         <GridViewColumn Header="Giờ vào" Width="60" DisplayMemberBinding="{Binding InTime}"/>
                         <GridViewColumn Header="Giờ ra" Width="60" DisplayMemberBinding="{Binding OutTime}"/>
-                        <GridViewColumn Header="Giảm giá" Width="60">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Discount}"/>
-                                        <TextBlock Text=".000"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Thành tiền" Width="60">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding ActualPrice}"/>
-                                        <TextBlock Text=".000"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+                        <GridViewColumn Header="Giảm giá" Width="60" DisplayMemberBinding="{Binding Discount,StringFormat=N3}"/>
+                        <GridViewColumn Header="Thành tiền" Width="60" DisplayMemberBinding="{Binding ActualPrice,StringFormat=N3}"/>
                         <GridViewColumn Header="Trạng thái" DisplayMemberBinding="{Binding StatusTitle}"/>
                     </GridView>
                 </ListView.View>
@@ -72,26 +54,8 @@
                     <GridView>
                         <GridViewColumn Header="Tên món" Width="100" DisplayMemberBinding="{Binding FoodVietnameseName}"/>
                         <GridViewColumn Header="SL" DisplayMemberBinding="{Binding Quantity}"/>
-                        <GridViewColumn Header="Đơn giá">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding FoodPrice}"/>
-                                        <TextBlock Text=".000"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Thành tiền">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding TotalPrice}"/>
-                                        <TextBlock Text=".000"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+                        <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding FoodPrice,StringFormat=N3}"/>
+                        <GridViewColumn Header="Thành tiền" DisplayMemberBinding="{Binding TotalPrice,StringFormat=N3}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

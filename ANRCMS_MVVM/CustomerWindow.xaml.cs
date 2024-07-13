@@ -51,5 +51,12 @@ namespace ANRCMS_MVVM
             btnCart.Visibility = Visibility.Collapsed;
             btnHome.Visibility = Visibility.Visible;
         }
+
+        private void btnHome_Click(object sender, RoutedEventArgs e)
+        {
+            frMain.Content = Menu;
+            btnCart.Visibility = Visibility.Visible;
+            btnHome.Visibility = Visibility.Collapsed;
+        }
     }
 }
