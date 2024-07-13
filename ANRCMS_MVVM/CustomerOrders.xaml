@@ -5,25 +5,41 @@
       Title="CustomerOrders">
     <StackPanel>
         <TextBlock Text="Danh sách đơn hàng" FontSize="30" FontFamily="Myriad Pro" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 10 0 0" Foreground="Maroon"/>
-        <ListView Margin="5" Height="300">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="ID"/>
-                    <GridViewColumn Header="Ngày đặt hàng"/>
-                    <GridViewColumn Header="Giờ vào"/>
-                    <GridViewColumn Header="Giờ ra"/>
-                    <GridViewColumn Header="Giảm giá"/>
-                    <GridViewColumn Header="Thành tiền"/>
-                    <GridViewColumn Header="Trạng thái"/>
-                    <GridViewColumn Header="Xem hóa đơn">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" MinWidth="400"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*" MinWidth="200"/>
+            </Grid.ColumnDefinitions>
+            <ListView Margin="5" Height="300" ItemsSource="{Binding Orders}" SelectedValuePath="OrderId" SelectedValue="{Binding SelectedOrderId}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding OrderId}"/>
+                        <GridViewColumn Header="Ngày đặt hàng" DisplayMemberBinding="{Binding OrderDate, StringFormat=dd/MM/yyyy}"/>
+                        <GridViewColumn Header="Giờ vào" DisplayMemberBinding="{Binding InTime}"/>
+                        <GridViewColumn Header="Giờ ra" DisplayMemberBinding="{Binding OutTime}"/>
+                        <GridViewColumn Header="Giảm giá" DisplayMemberBinding="{Binding Discount, StringFormat=N3}"/>
+                        <GridViewColumn Header="Thành tiền" DisplayMemberBinding="{Binding TotalPrice,StringFormat=N3}"/>
+                        <GridViewColumn Header="Trạng thái" DisplayMemberBinding="{Binding StatusTitle}"/>
+                        <GridViewColumn Header="Xem hóa đơn">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Xem" Width="50" Command="{Binding DataContext.BillViewerCommand, RelativeSource={RelativeSource AncestorType=Page}}" CommandParameter="{Binding OrderId}" Template="{DynamicResource ConfirmTemplate}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <GridSplitter Background="Red" Width="5" Grid.Column="1" ResizeBehavior="PreviousAndNext"/>
+            <DataGrid Margin="5" Grid.Column="2" ItemsSource="{Binding OrderDetail}" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Tên món" Binding="{Binding FoodVietnameseName}"/>
+                    <DataGridTextColumn Header="Số lượng" Binding="{Binding Quantity}"/>
+                    <DataGridTextColumn Header="Đơn giá" Binding="{Binding FoodPrice, StringFormat=N3}"/>
+                    <DataGridTextColumn Header="Thành tiền" Binding="{Binding TotalPrice, StringFormat=N3}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </StackPanel>
 </Page>

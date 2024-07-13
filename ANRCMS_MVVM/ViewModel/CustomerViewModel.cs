@@ -1,4 +1,5 @@
 ﻿using ANRCMS_MVVM.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -14,6 +15,7 @@ namespace ANRCMS_MVVM.ViewModel
         public CustomerViewModel(Customer c)
         {
             LoggedInCustomer = c;
+            Orders = new ObservableCollection<Order>(AnhnguyenclaypotDbContext.INSTANCE.Orders.Where(x => x.CustomerId == LoggedInCustomer.CustomerId).ToList());
         }
         #region Customer Profile
         private Customer _loggedInCustomer = null!;
@@ -172,7 +174,7 @@ namespace ANRCMS_MVVM.ViewModel
 
         private void Confirm()
         {
-            if (MessageBox.Show("Bạn có muốn đặt hàng?\n(LƯU Ý: Bạn không thể hoàn tác đơn hàng!)","",MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
+            if (MessageBox.Show("Bạn có muốn đặt hàng?\n(LƯU Ý: Bạn không thể hoàn tác đơn hàng!)", "", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
             {
                 AnhnguyenclaypotDbContext.INSTANCE.Orders.Add(new Order
                 {
@@ -212,7 +214,43 @@ namespace ANRCMS_MVVM.ViewModel
         #endregion
 
         #region Order Details
-
+        public ObservableCollection<Order> Orders { get; set; }
+        private ObservableCollection<dynamic> _orderDetail = null!;
+        public ObservableCollection<dynamic> OrderDetail
+        {
+            get => _orderDetail;
+            set
+            {
+                _orderDetail = value;
+                OnPropertyChanged(nameof(OrderDetail));
+            }
+        }
+        public ICommand BillViewerCommand => new RelayCommand(ViewDetail, id => AnhnguyenclaypotDbContext.INSTANCE.Orders.Find((int)id)?.Status == 4);
+        private int _selectedOrderId;
+        public int SelectedOrderId
+        {
+            get => _selectedOrderId;
+            set
+            {
+                _selectedOrderId = value;
+                OnPropertyChanged(nameof(SelectedOrderId));
+                OrderDetail = new ObservableCollection<dynamic>(AnhnguyenclaypotDbContext.INSTANCE.OrderDetails
+                                                                                                  .Include(x => x.Food)
+                                                                                                  .Where(x => x.OrderId == _selectedOrderId)
+                                                                                                  .Select(x => new
+                                                                                                  {
+                                                                                                      x.Food.FoodVietnameseName,
+                                                                                                      x.Quantity,
+                                                                                                      x.Food.FoodPrice,
+                                                                                                      TotalPrice = x.Food.FoodPrice * x.Quantity
+                                                                                                  })
+                                                                                                  .ToList());
+            }
+        }
+        private void ViewDetail(object parameter)
+        {
+            
+        }
         #endregion
     }
 }
