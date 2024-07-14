@@ -56,5 +56,11 @@ namespace ANRCMS_MVVM
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng, vui lòng thử lại!");
             }
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Homepage mainWindow = (Homepage)Window.GetWindow(this);
+            mainWindow.frameHome.Content = mainWindow.RegisterPage;
+        }
     }
 }

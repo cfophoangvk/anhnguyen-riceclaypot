@@ -80,6 +80,13 @@ namespace ANRCMS_MVVM.ViewModel
             {
                 return true;
             }
+            if (c.Address != null)
+            {
+                if (c.Address.Length > 255)
+                {
+                    return false;
+                }
+            }
             return false;
         }
         #endregion
@@ -249,7 +256,9 @@ namespace ANRCMS_MVVM.ViewModel
         }
         private void ViewDetail(object parameter)
         {
-            
+            int orderId = (int)parameter;
+            Bill b = new Bill(orderId);
+            b.ShowDialog();
         }
         #endregion
     }

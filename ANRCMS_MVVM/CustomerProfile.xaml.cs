@@ -17,7 +17,6 @@ namespace ANRCMS_MVVM
             InitializeComponent();
             this.DataContext = new CustomerViewModel(c);
             Customer = c;
-            
         }
 
         private void btnEnablePassword_Click(object sender, RoutedEventArgs e)

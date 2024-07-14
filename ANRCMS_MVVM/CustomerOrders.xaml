@@ -19,7 +19,7 @@
                         <GridViewColumn Header="Giờ vào" DisplayMemberBinding="{Binding InTime}"/>
                         <GridViewColumn Header="Giờ ra" DisplayMemberBinding="{Binding OutTime}"/>
                         <GridViewColumn Header="Giảm giá" DisplayMemberBinding="{Binding Discount, StringFormat=N3}"/>
-                        <GridViewColumn Header="Thành tiền" DisplayMemberBinding="{Binding TotalPrice,StringFormat=N3}"/>
+                        <GridViewColumn Header="Thành tiền" DisplayMemberBinding="{Binding ActualPrice,StringFormat=N3}"/>
                         <GridViewColumn Header="Trạng thái" DisplayMemberBinding="{Binding StatusTitle}"/>
                         <GridViewColumn Header="Xem hóa đơn">
                             <GridViewColumn.CellTemplate>

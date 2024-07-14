@@ -1,0 +1,77 @@
+﻿<Window x:Class="ANRCMS_MVVM.Bill"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Hoá đơn" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Arial"/>
+        </Style>
+    </Window.Resources>
+    <StackPanel>
+        <StackPanel Background="Black" HorizontalAlignment="Center" Margin="10">
+            <TextBlock Text="Cơm thố" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Margin="5" Foreground="White"/>
+            <TextBlock Text="ANH NGUYỄN" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold" Margin="10" Foreground="White"/>
+        </StackPanel>
+        <TextBlock Text="HÓA ĐƠN THANH TOÁN" HorizontalAlignment="Center" FontWeight="Bold" FontSize="15"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+            <TextBlock Text="Số HĐ: " FontWeight="Bold" FontSize="15"/>
+            <TextBlock Name="tbBillNumber" FontWeight="Bold" FontSize="15"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
+            <TextBlock Text="Ngày: " FontWeight="Bold" FontSize="15"/>
+            <TextBlock Name="tbBillDate" FontWeight="Bold" FontSize="15"/>
+        </StackPanel>
+        <Grid Name="gridBillTime" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Giờ vào: " FontWeight="Bold" FontSize="15"/>
+                <TextBlock Name="tbBillInTime" FontWeight="Bold" FontSize="15"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1">
+                <TextBlock Text="Giờ ra: " FontWeight="Bold" FontSize="15"/>
+                <TextBlock Name="tbBillOutTime" FontWeight="Bold" FontSize="15"/>
+            </StackPanel>
+        </Grid>
+        <DataGrid Name="dgBillOrderDetail" BorderThickness="1" BorderBrush="Black" Margin="10 0" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" FontFamily="Arial" ColumnWidth="SizeToHeader" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="STT" Binding="{Binding BillID}"/>
+                <DataGridTextColumn Header="Tên món" Binding="{Binding FoodVietnameseName}" Width="165"/>
+                <DataGridTextColumn Header="SL" Binding="{Binding Quantity}"/>
+                <DataGridTextColumn Header="Đơn giá" Binding="{Binding FoodPrice, StringFormat=N3}"/>
+                <DataGridTextColumn Header="Thành tiền" Binding="{Binding TotalAmount, StringFormat=N3}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Margin="0 10 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <TextBlock Text="Thành tiền" Margin="10 0 0 0" FontSize="14" FontWeight="Bold"/>
+                <TextBlock Text="Tiền giảm giá món" Margin="10 5 0 0" FontSize="14"/>
+                <Line X1="10" X2="280" Y1="5" Y2="5" Stroke="Gray"/>
+                <TextBlock Text="Tổng tiền" Margin="10" FontSize="14" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock Name="tbBillTotalPrice" Margin="0 0 10 0" FontSize="14" FontWeight="Bold" TextAlignment="Right"/>
+                <TextBlock Name="tbBillDiscount" Margin="10 5 10 5" FontSize="14" TextAlignment="Right"/>
+                <Line X2="80" Stroke="Gray"/>
+                <TextBlock Name="tbBillActualPrice" Margin="10" FontSize="14" FontWeight="Bold" TextAlignment="Right"/>
+            </StackPanel>
+        </Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Cơm thố Anh Nguyễn - Cơ sở " HorizontalAlignment="Center" FontWeight="Bold" FontSize="13"/>
+            <TextBlock Name="tbBranchID" HorizontalAlignment="Center" FontWeight="Bold" FontSize="13"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5 0 0">
+            <TextBlock Text="Địa chỉ: " HorizontalAlignment="Center" FontSize="12"/>
+            <TextBlock Name="tbBranchName" HorizontalAlignment="Center" FontSize="12" TextWrapping="Wrap"/>
+        </StackPanel>
+        <Line X1="10" X2="342" Stroke="Gray" Margin="0 30 0 5"/>
+        <TextBlock Text="Cảm ơn Quý khách" HorizontalAlignment="Center" FontSize="12" FontWeight="Bold"/>
+        <TextBlock Text="© Powered by ANRCMS_MVVM" HorizontalAlignment="Center" FontSize="12" Margin="0 0 0 10"/>
+    </StackPanel>
+</Window>

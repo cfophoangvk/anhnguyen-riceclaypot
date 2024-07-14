@@ -23,8 +23,8 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Button Content="Đăng nhập" Background="DeepSkyBlue" Width="75" FontSize="15" Click="Button_Click"/>
-                        <Button Grid.Column="1" Content="Đăng ký" Background="LightGray" Width="75" FontSize="15"/>
+                        <Button Content="Đăng nhập" Template="{DynamicResource NormalTemplate}" Width="75" Height="25" FontSize="15" Click="Button_Click"/>
+                        <Button Grid.Column="1" Content="Đăng ký" Template="{DynamicResource NormalTemplate}" Width="75" Height="25" FontSize="15" Click="Button_Click_2"/>
                     </Grid>
                 </StackPanel>
             </TabItem>
@@ -40,7 +40,7 @@
                         <TextBlock Text="Mật khẩu:" FontSize="15" Width="100" VerticalAlignment="Center"/>
                         <PasswordBox Name="pwStaffPassword" Width="200" FontSize="15"/>
                     </StackPanel>
-                    <Button Content="Đăng nhập" Background="DeepSkyBlue" Width="75" FontSize="15" Click="Button_Click_1"/>
+                    <Button Content="Đăng nhập" Template="{DynamicResource NormalTemplate}" Width="75" Height="25" FontSize="15" Click="Button_Click_1"/>
                 </StackPanel>
             </TabItem>
         </TabControl>
