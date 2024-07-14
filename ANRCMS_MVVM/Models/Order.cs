@@ -15,7 +15,7 @@ public partial class Order
 
     public short Status { get; set; }
 
-    public DateOnly? OrderDate { get; set; }
+    public DateOnly OrderDate { get; set; }
 
     public TimeOnly? InTime { get; set; }
 
