@@ -2,9 +2,9 @@
 <h3 align="center">A passionated .NET developer</h3>
 
 <h4 align="center">About this project:</h4>
-- 🔭 This project is done in <b>10</b>days.
-- Number of LOCs: 
-- 📫 Contact me at **hieuthien20042004@gmail.com**
+- 🔭 This project is done in <b>12</b> days.(2024/07/04 - 2024/07/15)<br>
+- Number of LOCs: <b>2910</b><br>
+- 📫 Contact me at **hieuthien20042004@gmail.com**<br>
 
 <h3 align="left">Languages and Tools in this project:</h3>
 <p align="left">
@@ -15,7 +15,7 @@
 </p>
 
 <h3>Before running the project, make sure to:</h3>
-- Download <a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">SQL SERVER</a>
-- Download the <a href="https://font.download/font/myriad-pro">Myriad Pro</a> font!
-- Clean and build the project
+- Download <a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">SQL SERVER</a><br>
+- Download the <a href="https://font.download/font/myriad-pro">Myriad Pro</a> font!<br>
+- Clean and build the project<br>
 - Run the DB script before running the application!
