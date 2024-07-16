@@ -37,7 +37,7 @@ namespace ANRCMS_MVVM
             string phone = tbStaffPhone.Text;
             string password = pwStaffPassword.Password;
             var staff = AnhnguyenclaypotDbContext.INSTANCE.Staff.Where(x => x.StaffPhone == phone && x.Password == password).FirstOrDefault();
-            if (phone == "1" && password == "1")
+            if (phone == "admin" && password == "admin")
             {
                 AdminWindow adminWindow = new AdminWindow();
                 adminWindow.Show();
