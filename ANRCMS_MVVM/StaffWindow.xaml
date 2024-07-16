@@ -11,6 +11,6 @@
             </StackPanel>
         </Button>
         <Frame Name="frMain" Height="370" VerticalAlignment="Bottom" NavigationUIVisibility="Hidden" Source="StaffOrders.xaml"/>
-        <Button Name="btnLogout" Content="Logout" HorizontalAlignment="Right" VerticalAlignment="Top" Background="DeepSkyBlue" Padding="3" FontSize="13" Margin="5" FontFamily="Arial" FontWeight="Bold" Click="btnLogout_Click"/>
+        <Button Name="btnLogout" Content="Đăng xuất" HorizontalAlignment="Right" VerticalAlignment="Top" Background="DeepSkyBlue" Padding="3" FontSize="13" Margin="5" FontFamily="Arial" FontWeight="Bold" Click="btnLogout_Click"/>
     </Grid>
 </Window>
